@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="HJdIKhHqu7mv4cnznzjS">
+    <mxGraphModel dx="1004" dy="660" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fMtRbomkRfGP5VFntRAz-13" edge="1" parent="1" source="fMtRbomkRfGP5VFntRAz-1" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="fMtRbomkRfGP5VFntRAz-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#6B6B6B);" value="Start: user runs program in terminal" vertex="1">
+          <mxGeometry height="60" width="120" x="260" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-14" edge="1" parent="1" source="fMtRbomkRfGP5VFntRAz-2" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="fMtRbomkRfGP5VFntRAz-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#8686C7);" value="CLI input handler&lt;div&gt;reads and parses commands&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="260" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-15" edge="1" parent="1" source="fMtRbomkRfGP5VFntRAz-3" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="fMtRbomkRfGP5VFntRAz-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#8686C7);" value="Command logic&lt;div&gt;(log, lookup, history)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="260" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-16" edge="1" parent="1" source="fMtRbomkRfGP5VFntRAz-4" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;" target="fMtRbomkRfGP5VFntRAz-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#004A25);" value="Storage layer using&lt;div&gt;BufferedReader/&lt;/div&gt;&lt;div&gt;BufferedWriter&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="260" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="iufuUs8EFHv8Ba0sE9SF-2" edge="1" parent="1" source="fMtRbomkRfGP5VFntRAz-5" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;" target="fMtRbomkRfGP5VFntRAz-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="60" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#004A25);" value="workouts.csv containing data, exercise, weight, reps" vertex="1">
+          <mxGeometry height="60" width="120" x="260" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-11" edge="1" parent="1" source="fMtRbomkRfGP5VFntRAz-1" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;innerLoopWaypoints=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;startArrow=classicThin;startFill=1;endArrow=none;endFill=0;" target="fMtRbomkRfGP5VFntRAz-3">
+          <mxGeometry relative="1" x="-0.2423" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="120" />
+              <mxPoint x="510" y="120" />
+              <mxPoint x="510" y="400" />
+              <mxPoint x="380" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="prints result&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="500" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;strokeWidth=0;" value="typed command" vertex="1">
+          <mxGeometry height="20" width="130" x="320" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="parsed command&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="110" x="300" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-22" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="save / fetch data" vertex="1">
+          <mxGeometry height="30" width="100" x="310" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="fMtRbomkRfGP5VFntRAz-23" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="read / write rows" vertex="1">
+          <mxGeometry height="30" width="120" x="320" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="iufuUs8EFHv8Ba0sE9SF-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="sends data back depending on command" vertex="1">
+          <mxGeometry height="30" width="120" x="40" y="510" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
