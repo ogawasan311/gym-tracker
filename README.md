@@ -36,7 +36,9 @@ cd gym-tracker
 
 - [ ] Progressive overload suggestions
 - [ ] Edit or delete an incorrect entry
+- [ ] Auto-recommend exercise based on history
 - [ ] Mobile front end for an app
+
 
 ## Author
 
