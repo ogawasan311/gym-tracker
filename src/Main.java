@@ -28,7 +28,6 @@ public class Main {
 
             }
         // Catches the error for parsing. 
-        // The user can still input negative numbers so fix that as well.
         } catch (NumberFormatException e) {
             IO.println("Error: weight must be a number and reps must be a whole number.");
         } catch (IOException e) {
@@ -58,8 +57,20 @@ public class Main {
             return;
         }
 
+
         double weight = Double.parseDouble(IO.readln("Weight (lbs): ").trim());
+        // checks if weight is valid number
+        if (Double.isNaN(weight) || Double.isInfinite(weight) || weight <= 0) {
+            IO.println("Error: weight must be greater than 0.");
+            return;
+        }
+        
         int reps = Integer.parseInt(IO.readln("Reps: ").trim());
+        // checks if reps is greater than 0
+        if (reps <= 0) {
+            IO.println("Error: reps must be greater than 0.");
+            return;
+        }
         
         storage.save(new WorkoutSet(exercise, weight, reps, LocalDate.now()));
         IO.println("Logged: " + exercise + ", " + weight + " lbs x " + reps + " reps");
