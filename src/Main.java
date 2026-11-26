@@ -1,11 +1,14 @@
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.List; 
 
 public class Main {
     private static final WorkoutStorage storage =
             new WorkoutStorage(Path.of("data", "workouts.csv"));
+
+    private static final int RECENT_SET_LIMIT = 5;
 
     public static void main(String[] args) {
         if (args.length == 0) {
@@ -16,6 +19,7 @@ public class Main {
             switch (args[0]) {
                 case "log" -> handleLog();
                 case "lookup" -> handleLookup(args);
+                case "history" -> handleHistory(args);
                 default -> {
                     IO.println("Unknown command: " + args[0]);
                     printUsage();
@@ -32,6 +36,7 @@ public class Main {
         IO.println("Usage:");
         IO.println("  java -cp out Main log");
         IO.println("  java -cp out Main lookup \"exercise name\"");
+        IO.println("  java -cp out Main history \"exericse name\"");
     }
 
     private static void handleLog() throws IOException {
@@ -44,33 +49,83 @@ public class Main {
         IO.println("Logged: " + exercise + ", " + weight + " lbs x " + reps + " reps");
     }
 
-        private static void handleLookup(String[] args) throws IOException {
+    private static void handleLookup(String[] args) throws IOException {
         if (args.length < 2) {
             IO.println("Please give an exercise name, like: lookup \"leg extension\"");
             return;
         }
         String exercise = args[1].trim().toLowerCase();
-        List<WorkoutSet> allSets = storage.loadAll();
-
-        // Find the most recent date this exercise was done
-        LocalDate latest = null;
-        for (WorkoutSet set : allSets) {
-            if (set.exercise().equals(exercise)
-                    && (latest == null || set.date().isAfter(latest))) {
-                latest = set.date();
-            }
-        }
-        if (latest == null) {
+        List<WorkoutSet> sets = setsFor(exercise);
+        if (sets.isEmpty()) {
             IO.println("No history found for " + exercise);
             return;
         }
 
-        // Show every set from that day, since a real session has several sets
-        IO.println("Last session for " + exercise + " (" + latest + "):");
-        for (WorkoutSet set : allSets) {
-            if (set.exercise().equals(exercise) && set.date().equals(latest)) {
-                IO.println("  " + set.weight() + " lbs x " + set.reps() + " reps");
+        LocalDate latest = sets.get(0).date();
+        for (WorkoutSet set : sets) {
+            if (set.date().isAfter(latest)) {
+                latest = set.date();
             }
         }
+
+        // Show every set from that day, since a real session has several sets
+        IO.println("Last session for " + exercise + " (" + latest + "):");
+        for (WorkoutSet set : sets) {
+            if (set.date().equals(latest)) {
+                IO.println("  " + formatSet(set));
+            }
+        }
+    }
+
+        private static void handleHistory(String[] args) throws IOException {
+        if (args.length < 2) {
+            IO.println("Please give an exercise name, like: history \"leg extension\"");
+            return;
+        }
+        String exercise = args[1].trim().toLowerCase();
+        List<WorkoutSet> sets = setsFor(exercise);
+        if (sets.isEmpty()) {
+            IO.println("No history found for " + exercise);
+            return;
+        }
+
+        WorkoutSet best = findBestSet(sets);
+        IO.println("Best set for " + exercise + ": " + formatSet(best) + " (" + best.date() + ")");
+
+        // The file is only ever appended to, so the last lines are the newest
+        IO.println("Recent sets (newest first):");
+        int shown = 0;
+        for (int i = sets.size() - 1; i >= 0 && shown < RECENT_SET_LIMIT; i--) {
+            WorkoutSet set = sets.get(i);
+            IO.println("  " + set.date() + "  " + formatSet(set));
+            shown++;
+        }
+    }
+
+    private static List<WorkoutSet> setsFor(String exercise) throws IOException {
+        List<WorkoutSet> matches = new ArrayList<>();
+        for (WorkoutSet set : storage.loadAll()) {
+            if (set.exercise().equals(exercise)) {
+                matches.add(set);
+            }
+        }
+        return matches;
+    }
+
+    private static WorkoutSet findBestSet(List<WorkoutSet> sets) {
+        WorkoutSet best = sets.get(0);
+        for (WorkoutSet set : sets) {
+            boolean heavier = set.weight() > best.weight();
+            // Same weight for more reps counts as better, so ties don't depend on file order
+            boolean sameWeightMoreReps = set.weight() == best.weight() && set.reps() > best.reps();
+            if (heavier || sameWeightMoreReps) {
+                best = set;
+            }
+        }
+        return best;
+    }
+
+    private static String formatSet(WorkoutSet set) {
+        return set.weight() + " lbs x " + set.reps() + " reps";
     }
 }
