@@ -27,6 +27,10 @@ public class Main {
                 
 
             }
+        // Catches the error for parsing. 
+        // The user can still input negative numbers so fix that as well.
+        } catch (NumberFormatException e) {
+            IO.println("Error: weight must be a number and reps must be a whole number.");
         } catch (IOException e) {
             IO.println("Could not read or write the workout file: " + e.getMessage());
         }
