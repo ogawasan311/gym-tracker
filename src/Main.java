@@ -46,9 +46,21 @@ public class Main {
     private static void handleLog() throws IOException {
         // Lowercase and trim so "Leg Extension " and "leg extension" match later
         String exercise = IO.readln("Exercise: ").trim().toLowerCase();
+
+        // fixes the naming style error
+        if (exercise.isEmpty()) {
+            IO.println("Error: excerise name cannot be empty.");
+            return;
+        }
+
+        if (exercise.contains(",")) {
+            IO.println("Error: exercise name cannot contain a comma.");
+            return;
+        }
+
         double weight = Double.parseDouble(IO.readln("Weight (lbs): ").trim());
         int reps = Integer.parseInt(IO.readln("Reps: ").trim());
-
+        
         storage.save(new WorkoutSet(exercise, weight, reps, LocalDate.now()));
         IO.println("Logged: " + exercise + ", " + weight + " lbs x " + reps + " reps");
     }
