@@ -20,6 +20,7 @@ public class Main {
                 case "log" -> handleLog();
                 case "lookup" -> handleLookup(args);
                 case "history" -> handleHistory(args);
+                case "suggest" -> handleSuggest(args);
                 default -> {
                     IO.println("Unknown command: " + args[0]);
                     printUsage();
@@ -40,6 +41,7 @@ public class Main {
         IO.println("  java -cp out Main log");
         IO.println("  java -cp out Main lookup \"exercise name\"");
         IO.println("  java -cp out Main history \"exericse name\"");
+        IO.println("  java -cp out Main suggest \"exercise name\"");
     }
 
     private static void handleLog() throws IOException {
@@ -118,6 +120,27 @@ public class Main {
             IO.println("  " + set.date() + "  " + formatSet(set));
             shown++;
         }
+    }
+
+    private static void handleSuggest(String[] args) throws IOException {
+        if (args.length < 2) {
+            IO.println("Please give an exercise name, like: history \"leg extension\"");
+            return;
+        }
+        String exercise = args[1].trim().toLowerCase();
+        List<WorkoutSet> sets = setsFor(exercise);
+        if (sets.isEmpty()) {
+            IO.println("No history found for " + exercise);
+            return;
+        }
+
+        List<WorkoutSet> session = lastSessionSets(sets);
+        double nextWeight = ProgressionSuggester.suggestNextWeight(session);
+        IO.println("Last session (" + session.get(0).date() + "):");
+        for (WorkoutSet set: session) {
+            IO.println(" " + formatSet(set));
+        }
+        IO.println("Suggested next weight for " + exercise + ": " + nextWeight+ " lbs");
     }
 
     private static List<WorkoutSet> setsFor(String exercise) throws IOException {
