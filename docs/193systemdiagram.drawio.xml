@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net">
+<mxfile host="app.diagrams.net" scale="2" border="0">
   <diagram name="Page-1" id="HJdIKhHqu7mv4cnznzjS">
     <mxGraphModel dx="1004" dy="660" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -26,7 +26,7 @@
             <mxPoint x="320" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fMtRbomkRfGP5VFntRAz-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#8686C7);" value="Command logic&lt;div&gt;(log, lookup, history)&lt;/div&gt;" vertex="1">
+        <mxCell id="fMtRbomkRfGP5VFntRAz-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#8686C7);" value="Command logic&lt;div&gt;(log, lookup, history, suggest)&lt;/div&gt;" vertex="1">
           <mxGeometry height="60" width="120" x="260" y="360" as="geometry" />
         </mxCell>
         <mxCell id="fMtRbomkRfGP5VFntRAz-16" edge="1" parent="1" source="fMtRbomkRfGP5VFntRAz-4" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;" target="fMtRbomkRfGP5VFntRAz-5">
