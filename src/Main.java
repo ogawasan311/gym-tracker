@@ -28,7 +28,7 @@ public class Main {
                 
 
             }
-        // Catches the error for parsing. 
+        // 
         } catch (NumberFormatException e) {
             IO.println("Error: weight must be a number and reps must be a whole number.");
         } catch (IOException e) {
@@ -48,7 +48,7 @@ public class Main {
         // Lowercase and trim so "Leg Extension " and "leg extension" match later
         String exercise = IO.readln("Exercise: ").trim().toLowerCase();
 
-        // fixes the naming style error
+        
         if (exercise.isEmpty()) {
             IO.println("Error: excerise name cannot be empty.");
             return;
@@ -61,14 +61,14 @@ public class Main {
 
 
         double weight = Double.parseDouble(IO.readln("Weight (lbs): ").trim());
-        // checks if weight is valid number
+        // parseDouble accepts Nan and Infinity, which aren't real weights
         if (Double.isNaN(weight) || Double.isInfinite(weight) || weight <= 0) {
             IO.println("Error: weight must be greater than 0.");
             return;
         }
         
         int reps = Integer.parseInt(IO.readln("Reps: ").trim());
-        // checks if reps is greater than 0
+        
         if (reps <= 0) {
             IO.println("Error: reps must be greater than 0.");
             return;
@@ -170,7 +170,7 @@ public class Main {
         return set.weight() + " lbs x " + set.reps() + " reps";
     }
 
-    // returns the latest set 
+    
     private static List<WorkoutSet> lastSessionSets(List<WorkoutSet> sets) {
         LocalDate latest = sets.get(0).date();
         for (WorkoutSet set: sets) { 
