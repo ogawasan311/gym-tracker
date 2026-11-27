@@ -88,23 +88,14 @@ public class Main {
             return;
         }
 
-        LocalDate latest = sets.get(0).date();
-        for (WorkoutSet set : sets) {
-            if (set.date().isAfter(latest)) {
-                latest = set.date();
-            }
-        }
-
-        // Show every set from that day, since a real session has several sets
-        IO.println("Last session for " + exercise + " (" + latest + "):");
-        for (WorkoutSet set : sets) {
-            if (set.date().equals(latest)) {
-                IO.println("  " + formatSet(set));
-            }
+        List<WorkoutSet> session = lastSessionSets(sets);
+        IO.println("Last session for " + exercise + " (" + session.get(0).date() + "):");
+        for (WorkoutSet set: session) {
+            IO.println(" " + formatSet(set));
         }
     }
 
-        private static void handleHistory(String[] args) throws IOException {
+    private static void handleHistory(String[] args) throws IOException {
         if (args.length < 2) {
             IO.println("Please give an exercise name, like: history \"leg extension\"");
             return;
@@ -154,5 +145,22 @@ public class Main {
 
     private static String formatSet(WorkoutSet set) {
         return set.weight() + " lbs x " + set.reps() + " reps";
+    }
+
+    // returns the latest set 
+    private static List<WorkoutSet> lastSessionSets(List<WorkoutSet> sets) {
+        LocalDate latest = sets.get(0).date();
+        for (WorkoutSet set: sets) { 
+            if (set.date().isAfter(latest)) {
+                latest = set.date();
+            }
+        }
+        List<WorkoutSet> session = new ArrayList<>();
+        for (WorkoutSet set: sets) { 
+            if (set.date().equals(latest)) {
+                session.add(set);
+            }
+        }
+        return session;
     }
 }
